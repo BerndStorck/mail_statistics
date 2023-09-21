@@ -2,8 +2,10 @@
 #
 # statistik.sh
 #
-# Version 1.0.0
-# Datum:  2023-09-20
+# Version 1.0.1
+# Datum:  2023-09-21
+#
+# Geschichte: 2023-09-20, 2023-09-21
 #
 # Beschreibung:
 #
@@ -51,10 +53,10 @@ done
 
 # Stopwoerter, ueberfluessige Zeichen und die Dateiendung '.eml' loeschen:
 for i in $(seq 0 $last_index); do
+  tmp="${tmp// - / }"
+  tmp="${tmp//  / }"
   for word in "${to_delete[@]}"; do
     tmp="${gisted_subjects[$i]%.eml}"
-    tmp="${tmp// - / }"
-    tmp="${tmp//  / }"
     gisted_subjects[$i]="${tmp//$word/}"
   done
 done
